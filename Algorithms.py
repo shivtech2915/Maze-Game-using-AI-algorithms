@@ -265,7 +265,27 @@ class UCS:
         return False
 
     def optimalPath(self):
-        ## WRITE YOUR CODE HERE ##
+        pq = PriorityQueue(Pair(Pair(0, 0), 0))
+
+        currentBest = [ [OO for _ in range(len(self.grid[i]))] for i in range(len(self.grid)) ]
+        parent = [ [Pair(-1, -1) for _ in range(len(self.grid[i]))] for i in range(len(self.grid))]
+
+        pq.push(Pair(self.start, 0))
+        currentBest[self.start.x][self.start.y] = 0
+
+        answer = -1
+        while(pq.isEmpty() == False):
+            node = pq.pop()
+            print(node)
+            if(node.f == self.target):
+                answer = node.s
+                break
+            
+            for i in range(4):
+                RR = node.f.x + dx[i]
+                CC = node.f.y + dy[i]
+         
+                if(self.Valid(RR, CC)):
         pass
 
     
